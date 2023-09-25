@@ -23,7 +23,6 @@ const QA = ({ currentUser, setCurrentUser }) => {
   //處理發布留言
   const handlePostMessage = () => {
     QAService.postMessage(newMessage.title, newMessage.content).then((data) => {
-      // setMessages([...messages, data]);
       setNewMessage({ title: "", content: "" });
       setIsPosting(!isPosting);
     });

@@ -7,7 +7,6 @@ const QA = ({ currentUser, setCurrentUser }) => {
   const [isPosting, setIsPosting] = useState(null);
   const [isReading, setIsReading] = useState(null);
   const [messageId, setMessageId] = useState(null);
-  const [reply, setReply] = useState(null);
   const [newReply, setNewReply] = useState({ content: "" });
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [ellipsisClick, setEllipsisClick] = useState(false);
@@ -19,12 +18,8 @@ const QA = ({ currentUser, setCurrentUser }) => {
   const [deletedMsg, setDeletedMsg] = useState("");
   const navigate = useNavigate();
   //首次render所有留言
-  const {
-    isLoadingMsg,
-    isErrorMsg,
-    data: messages,
-    errorMsg,
-  } = useGetMessages();
+  const { isErrorMsg, data: messages, errorMsg } = useGetMessages();
+
   //處理發布留言
   const handlePostMessage = () => {
     QAService.postMessage(newMessage.title, newMessage.content).then((data) => {
@@ -48,7 +43,6 @@ const QA = ({ currentUser, setCurrentUser }) => {
   const handlePostReply = (_id) => {
     QAService.postReply(_id, newReply.content)
       .then((data) => {
-        setReply(data);
         setNewReply({ content: "" });
       })
       .catch((error) => {
@@ -96,7 +90,6 @@ const QA = ({ currentUser, setCurrentUser }) => {
       setMessageId(_id);
       setIsReading(true);
       window.history.pushState(null, "", "QA/" + _id);
-      // setReply(readMessage.replies);
     }
   };
 
@@ -110,7 +103,6 @@ const QA = ({ currentUser, setCurrentUser }) => {
     setIsPosting("");
     setIsReading(false);
     setMessageId(null);
-    setReply(null);
     setEllipsisClick(false);
     setMessageId(null);
     window.history.replaceState(null, "", "/QA");
@@ -243,40 +235,60 @@ const QA = ({ currentUser, setCurrentUser }) => {
                 e.stopPropagation();
               }}
             >
-              有什麼想問嗎？ 立即發問<span> </span>
+              有什麼想問嗎？ 立即發問
               <i className="fa-solid fa-pen"></i>
             </button>
           </div>
           <div className="postBlock">
             {isPosting && (
               <div className="QAPost" ref={postBlockRef}>
-                <button
-                  className="xMark"
-                  onClick={() => setIsPosting(!isPosting)}
-                >
-                  <i className="fa-solid fa-xmark fa-2xl"></i>
-                </button>
-                <textarea
-                  className="title"
-                  type="text"
-                  placeholder="標題"
-                  value={newMessage.title}
-                  onChange={(e) =>
-                    setNewMessage({ ...newMessage, title: e.target.value })
-                  }
-                />
-                <textarea
-                  className="content"
-                  type="text"
-                  placeholder="內容"
-                  value={newMessage.content}
-                  onChange={(e) =>
-                    setNewMessage({ ...newMessage, content: e.target.value })
-                  }
-                />
-                <button className="post" onClick={handlePostMessage}>
-                  發布
-                </button>
+                {currentUser ? (
+                  <div>
+                    <button
+                      className="xMark"
+                      onClick={() => setIsPosting(!isPosting)}
+                    >
+                      <i className="fa-solid fa-xmark fa-2xl"></i>
+                    </button>
+                    <textarea
+                      className="title"
+                      type="text"
+                      placeholder="標題"
+                      value={newMessage.title}
+                      onChange={(e) =>
+                        setNewMessage({ ...newMessage, title: e.target.value })
+                      }
+                    />
+                    <textarea
+                      className="content"
+                      type="text"
+                      placeholder="內容"
+                      value={newMessage.content}
+                      onChange={(e) =>
+                        setNewMessage({
+                          ...newMessage,
+                          content: e.target.value,
+                        })
+                      }
+                    />
+                    <button className="post" onClick={handlePostMessage}>
+                      發布
+                    </button>
+                  </div>
+                ) : (
+                  <div className="unAuth">
+                    <button
+                      className="xMark"
+                      onClick={() => setIsPosting(!isPosting)}
+                    >
+                      <i className="fa-solid fa-xmark fa-2xl"></i>
+                    </button>
+                    <div className="redirectToAuth">
+                      <Link to="/login">必須登入才能夠留言，點擊此處登入</Link>
+                      <Link to="/register">還沒有會員嗎？點擊此處註冊</Link>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -402,7 +414,11 @@ const QA = ({ currentUser, setCurrentUser }) => {
               </div>
             </div>
           )}
-          {messages ? (
+          {messages && messages.length == 0 ? (
+            <div style={{ margin: "2rem", textAlign: "center" }}>
+              目前還沒有留言哦
+            </div>
+          ) : messages ? (
             <div className="QA">
               <div>
                 <ul>

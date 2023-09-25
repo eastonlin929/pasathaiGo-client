@@ -8,7 +8,7 @@ const QADetails = () => {
   const [reply, setReply] = useState([]);
   const [newReply, setNewReply] = useState({ content: "" });
   const navigate = useNavigate();
-  //首次渲詳細留言內容
+  //首次渲染詳細留言內容
   useEffect(() => {
     QAService.getURLMessage(messageId)
       .then((data) => {
@@ -18,7 +18,7 @@ const QADetails = () => {
       .catch((e) => {
         navigate("/404");
       });
-  }, [messageId]);
+  });
   //處理新回覆
   const handlePostReply = (_id) => {
     QAService.postReply(_id, newReply.content)
@@ -54,7 +54,49 @@ const QADetails = () => {
 
   return (
     <div>
-      {readMessage.user && (
+      {!readMessage.user ? (
+        <div className="singleDetailsBlock">
+          <div className="messageSelf">
+            <div className="inform">
+              <div className="QAPoster">載入中...</div>
+            </div>
+          </div>
+          {reply && (
+            <div>
+              <div className="replyBlock">
+                <ul>
+                  {reply.map((replies, index) => (
+                    <li key={index}>
+                      <div className="replyUser">
+                        {replies.user.nickname
+                          ? replies.user.nickname
+                          : replies.user.username}
+                      </div>
+                      <div className="replyTimer">{timeAgo(replies.time)}</div>
+                      <div className="replyContent">{replies.content}</div>
+                      <hr />
+                    </li>
+                  ))}
+                </ul>
+              </div>{" "}
+              <div className="postReply">
+                <textarea
+                  className="reply"
+                  placeholder="留言......"
+                  type="text"
+                  value={newReply.content}
+                  onChange={(e) =>
+                    setNewReply({ ...newReply, content: e.target.value })
+                  }
+                />
+                <button onClick={() => handlePostReply(readMessage._id)}>
+                  送出
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
         <div className="singleDetailsBlock">
           <div className="messageSelf">
             <div className="inform">

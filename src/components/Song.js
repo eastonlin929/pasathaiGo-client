@@ -1,21 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
 const Song = () => {
-  const [open, setOpen] = useState(false);
-  const divRef = useRef(null);
-  useEffect(() => {
-    console.log(divRef);
-  }, [open]);
-  let utterance = new window.SpeechSynthesisUtterance("ก ไก่");
-  utterance.lang = "th-TH";
-
-  return (
-    <div className="container">
-      <button onClick={() => window.speechSynthesis.speak(utterance)}>
-        ก ไก่
-      </button>
-    </div>
-  );
+  return <div className="container">音樂區</div>;
 };
 
 export default Song;

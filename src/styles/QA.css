@@ -1,0 +1,532 @@
+div hr {
+  width: 75vw;
+  border: 1.5px #b2967d solid;
+  margin: 0;
+  z-index: -100;
+}
+div section.QASearch {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0 0 0;
+}
+div section.QASearch .QASearch {
+  height: 2.5rem;
+  border: 2px #b2967d solid;
+  padding: 5px;
+  margin-right: 1rem;
+  border-radius: 5px;
+  background-color: #eee4e1;
+  white-space: nowrap;
+  overflow: hidden;
+  resize: none;
+}
+div section.QABlock {
+  display: flex;
+  justify-content: center;
+}
+div section.QABlock div.QABorder {
+  width: 90vw;
+  height: auto;
+  border: 1.5px #e7d8c9 solid;
+  margin: 1rem 0;
+  border-radius: 5px;
+  background-color: #eee4e1;
+}
+div section.QABlock div.QABorder div.QANav {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 2rem;
+}
+div section.QABlock div.QABorder div.QANav a {
+  text-decoration: none;
+  color: #b2967d;
+  font-size: 20px;
+  padding: 1rem 1rem 0.5rem 1rem;
+  height: 100%;
+}
+div section.QABlock div.QABorder div.QANav a:hover {
+  color: rgb(73, 3, 3);
+}
+div section.QABlock div.QABorder div.QANav .active {
+  color: rgb(73, 3, 3);
+  border-bottom: 3px #b2967d solid;
+}
+div section.QABlock div.QABorder div.layer {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.6);
+  position: fixed;
+  z-index: 2;
+  border: none;
+  top: 0;
+  left: 0;
+}
+div section.QABlock div.QABorder div.QAPost {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 90vh;
+  margin: auto;
+  background-color: #eee4e1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  border: 1px #b2967d solid;
+  border-radius: 5px;
+  z-index: 10;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+div section.QABlock div.QABorder div.QAPost::-webkit-scrollbar {
+  width: 7px;
+}
+div section.QABlock div.QABorder div.QAPost::-webkit-scrollbar-thumb {
+  background-color: #b2967d;
+  border-radius: 0;
+  border: 1px solid #b2967d;
+}
+div section.QABlock div.QABorder div.QAPost textarea {
+  width: 100%;
+  border: 1px white solid;
+  border-radius: 5px;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+}
+div section.QABlock div.QABorder div.QAPost textarea.title {
+  height: 10%;
+  font-size: xx-large;
+  padding: 0 1rem;
+}
+div section.QABlock div.QABorder div.QAPost textarea.title:placeholder {
+  font-size: xx-large;
+}
+div section.QABlock div.QABorder div.QAPost textarea.content {
+  height: 50%;
+  resize: none;
+}
+div section.QABlock div.QABorder div.QAPost textarea:focus {
+  outline: none;
+}
+div section.QABlock div.QABorder div.QAPost button {
+  align-items: flex-end;
+  border: none;
+  border-radius: 5px;
+  background-color: #b2967d;
+  cursor: pointer;
+}
+div section.QABlock div.QABorder div.QAPost button.xMark {
+  width: 30px;
+  height: 30px;
+  margin: 1rem 1rem 0 0;
+}
+div section.QABlock div.QABorder div.QAPost button.post {
+  width: initial;
+  height: 2.5rem;
+  padding: 5px 15px;
+  margin: 1rem;
+}
+div section.QABlock div.QABorder div.QA {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+div section.QABlock div.QABorder div.QA div ul {
+  list-style-type: none;
+}
+div section.QABlock div.QABorder div.QA div ul li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  width: 75vw;
+  height: 8rem;
+}
+div section.QABlock div.QABorder div.QA div ul li a {
+  width: 100%;
+  text-decoration: none;
+}
+div section.QABlock div.QABorder div.QA div ul li a div.QATitle,
+div section.QABlock div.QABorder div.QA div ul li a div.QAContent {
+  width: 80%;
+}
+div section.QABlock div.QABorder div.QA:hover {
+  cursor: pointer;
+}
+div section.QABlock div.post {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 0 0;
+}
+div section.QABlock div.post button {
+  border: none;
+  border-radius: 5px;
+  margin: 0.5rem;
+  padding: 10px;
+  background-color: #e6beae;
+}
+div section.confirmBlock div.confirmBG {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.6);
+  z-index: 25;
+}
+div section.confirmBlock div.confirmBG div.deleteConfirmBlock {
+  width: 50vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #b2967d;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  border-radius: 5px;
+}
+div section.confirmBlock div.confirmBG div.deleteConfirmBlock p {
+  margin: 1rem;
+  height: auto;
+  width: 100%;
+  text-align: center;
+}
+div section.confirmBlock div.confirmBG div.deleteConfirmBlock button {
+  height: auto;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 1rem 0.5rem;
+  background-color: #e6beae;
+}
+div section.confirmBlock div.confirmBG div.deleteConfirmBlock button.deleteCheck {
+  color: red;
+  background-color: rgb(215, 151, 151);
+}
+
+div.inform {
+  display: flex;
+}
+div.inform button {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #e6beae;
+}
+
+div.QAPoster {
+  font-size: medium;
+  margin: 0.3rem 0.5rem;
+}
+
+div.QATimer {
+  margin: 0.3rem 0.5rem;
+  color: #b2967d;
+}
+
+div.QATitle {
+  width: 80vw;
+  font-size: large;
+  margin: 0.3rem 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+div.QAContent {
+  width: 80vw;
+  font-size: small;
+  margin: 0.5rem 0.5rem 1rem 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+div.DetailsBlockBg {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+}
+
+div.DetailsBlock {
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 90vh;
+  margin: auto;
+  background-color: #eee4e1;
+  border: 1px #b2967d solid;
+  border-radius: 5px;
+  z-index: 15;
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: flex-start;
+}
+div.DetailsBlock div.close {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+div.DetailsBlock div.close button.xMark {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: #b2967d;
+  cursor: pointer;
+  margin: 0;
+  margin: 1rem;
+}
+div.DetailsBlock div.messageSelf {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  padding: 1rem 2rem 2rem 2rem;
+}
+div.DetailsBlock div.messageSelf div.inform,
+div.DetailsBlock div.messageSelf div.QAModifyBlock {
+  flex: 1;
+}
+div.DetailsBlock div.messageSelf div.inform {
+  margin: 0;
+  display: block;
+}
+div.DetailsBlock div.messageSelf div.inform div.QAPoster {
+  margin: 0;
+  font-size: medium;
+}
+div.DetailsBlock div.messageSelf div.inform div.QATimer {
+  margin: 0;
+  color: #b2967d;
+}
+div.DetailsBlock div.messageSelf div.QAModifyBlock {
+  text-align: right;
+}
+div.DetailsBlock div.messageSelf div.QAModifyBlock button {
+  border: none;
+  background-color: initial;
+}
+div.DetailsBlock div.messageSelf div.QAModifyBlock div.modifyOption {
+  background-color: white;
+  width: 120px;
+  height: auto;
+  padding: 0.5rem 0;
+  text-align: center;
+  border-radius: 5px;
+  position: absolute;
+  right: 0.5rem;
+  margin-top: 0.8rem;
+  animation: fadeIn 0.3s ease;
+}
+div.DetailsBlock div.messageSelf div.QAModifyBlock div.modifyOption:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: white;
+  border-top: 0;
+  margin-left: -15.5px;
+  margin-top: -10px;
+}
+div.DetailsBlock div.messageSelf div.QAModifyBlock div.modifyOption button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+}
+div.DetailsBlock div.messageSelf div.QAModifyBlock div.modifyOption button.deleteBtn {
+  color: red;
+}
+div.DetailsBlock div.messageSelf div.QAModifyBlock div.modifyOption button:hover {
+  background-color: gainsboro;
+}
+div.DetailsBlock div.messageSelf div.QAModifyBlock div.modifyOption button i {
+  padding-right: 10px;
+}
+div.DetailsBlock div.messageSelf div.QATitle {
+  margin: 1rem 0;
+  width: 100%;
+  font-size: large;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+div.DetailsBlock div.messageSelf div.QAContent {
+  margin: 0;
+  width: 100%;
+  font-size: small;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+div.DetailsBlock div.replyBlock {
+  padding-top: 1rem;
+  width: 100%;
+  min-height: 50vh;
+  background-color: #e7d8c9;
+}
+div.DetailsBlock div.replyBlock p {
+  width: 100%;
+  color: #b2967d;
+  margin: 0.5rem 1rem;
+}
+div.DetailsBlock div.replyBlock ul {
+  width: 100%;
+  padding: 0;
+  padding: 0.5rem 2rem;
+}
+div.DetailsBlock div.replyBlock ul li {
+  list-style: none;
+}
+div.DetailsBlock div.replyBlock ul li div.replyTimer {
+  color: #b2967d;
+}
+div.DetailsBlock div.replyBlock ul li div.replyContent {
+  margin: 1rem 0;
+}
+
+div.postReply {
+  background-color: #b2967d;
+  width: 90vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  position: sticky;
+  bottom: 0;
+  flex-wrap: wrap;
+}
+div.postReply textarea {
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-right: 2rem;
+  resize: none;
+}
+div.postReply button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #e6beae;
+}
+div.postReply a {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+div div.singleDetailsBlock {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  height: 75vh;
+  margin: 1rem 0;
+  background-color: #eee4e1;
+  justify-content: flex-start;
+  border: 1px #b2967d solid;
+  border-radius: 5px;
+  z-index: 10;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+div div.singleDetailsBlock div.messageSelf {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  margin: 1rem 2rem 2rem 2rem;
+}
+div div.singleDetailsBlock div.messageSelf div.inform {
+  margin: 0;
+  display: block;
+}
+div div.singleDetailsBlock div.messageSelf div.inform div.QAPoster {
+  margin: 0;
+  font-size: medium;
+}
+div div.singleDetailsBlock div.messageSelf div.inform div.QATimer {
+  margin: 0;
+  color: #b2967d;
+}
+div div.singleDetailsBlock div.messageSelf div.QATitle {
+  margin: 1rem 0;
+  width: 80vw;
+  font-size: large;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+div div.singleDetailsBlock div.messageSelf div.QAContent {
+  margin: 0;
+  width: 80vw;
+  font-size: small;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+div div.singleDetailsBlock div.replyBlock {
+  padding-top: 1rem;
+  width: 100%;
+  background-color: #e7d8c9;
+  min-height: 50vh;
+}
+div div.singleDetailsBlock div.replyBlock p {
+  color: #b2967d;
+  margin: 0.5rem 1rem;
+}
+div div.singleDetailsBlock div.replyBlock ul {
+  padding: 0;
+  margin: 0.5rem 2rem;
+}
+div div.singleDetailsBlock div.replyBlock ul li {
+  list-style: none;
+}
+div div.singleDetailsBlock div.replyBlock ul li div.replyTimer {
+  color: #b2967d;
+}
+div div.singleDetailsBlock div.replyBlock ul li div.replyContent {
+  margin: 1rem 0;
+}
+
+div.deletedMsg {
+  position: fixed;
+  bottom: 10vh;
+  left: 40%;
+  width: auto;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  background-color: rgb(73, 3, 3);
+  color: #eee4e1;
+}
+div.deletedMsg.active {
+  animation: fadeOut 2s 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}/*# sourceMappingURL=QA.css.map */

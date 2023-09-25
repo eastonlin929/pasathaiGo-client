@@ -1,0 +1,16 @@
+$themeColor-bg1: #b2967d;
+$themeColor-bg2: #eee4e1;
+$themeColor-word: rgba(73, 3, 3, 1);
+$themeColor-bg3: #e7d8c9;
+$themeColor-bg4: #ecf8f8;
+$themeColor-bgHeader: #e6beae;
+$themeColor-bg5: #ecf8f8;
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "./custom.scss";
+
+@import "./QA.scss";
+
+@import "./Profile.scss";
+
+@import "./Resource.scss";

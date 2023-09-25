@@ -1,0 +1,545 @@
+$themeColor-bg1: #b2967d;
+$themeColor-bg2: #eee4e1;
+$themeColor-word: rgba(73, 3, 3, 1);
+$themeColor-bg3: #e7d8c9;
+$themeColor-bg4: #ecf8f8;
+$themeColor-bgHeader: #e6beae;
+$themeColor-bg5: #ecf8f8;
+div {
+  hr {
+    width: 75vw;
+    border: 1.5px $themeColor-bg1 solid;
+    margin: 0;
+    z-index: -100;
+  }
+  section {
+    &.QASearch {
+      display: flex;
+      justify-content: flex-end;
+      margin: 1rem 0 0 0;
+      .QASearch {
+        height: 2.5rem;
+        border: 2px $themeColor-bg1 solid;
+        padding: 5px;
+        margin-right: 1rem;
+        border-radius: 5px;
+        background-color: $themeColor-bg2;
+        white-space: nowrap;
+        overflow: hidden;
+        resize: none;
+      }
+    }
+
+    &.QABlock {
+      display: flex;
+      justify-content: center;
+      div.QABorder {
+        width: 90vw;
+        height: auto;
+        border: 1.5px $themeColor-bg3 solid;
+        margin: 1rem 0;
+        border-radius: 5px;
+        background-color: $themeColor-bg2;
+        div.QANav {
+          display: flex;
+          justify-content: flex-start;
+          padding-left: 2rem;
+          a {
+            text-decoration: none;
+            color: $themeColor-bg1;
+            font-size: 20px;
+            padding: 1rem 1rem 0.5rem 1rem;
+            height: 100%;
+            &:hover {
+              color: $themeColor-word;
+            }
+          }
+          .active {
+            color: $themeColor-word;
+            border-bottom: 3px $themeColor-bg1 solid;
+          }
+        }
+
+        div.layer {
+          width: 100vw;
+          height: 100vh;
+          background-color: rgba(128, 128, 128, 0.6);
+          position: fixed;
+          z-index: 2;
+          border: none;
+          top: 0;
+          left: 0;
+        }
+        div.QAPost {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 90vw;
+          height: 90vh;
+          margin: auto;
+          background-color: $themeColor-bg2;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          border: 1px $themeColor-bg1 solid;
+          border-radius: 5px;
+          z-index: 10;
+          overflow-x: hidden;
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            width: 7px;
+            // background-color: $themeColor-word;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: $themeColor-bg1;
+            border-radius: 0;
+            border: 1px solid #b2967d;
+          }
+          textarea {
+            width: 100%;
+            border: 1px white solid;
+            border-radius: 5px;
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            &.title {
+              height: 10%;
+              font-size: xx-large;
+              padding: 0 1rem;
+              &:placeholder {
+                font-size: xx-large;
+              }
+            }
+            &.content {
+              height: 50%;
+              resize: none;
+            }
+            &:focus {
+              outline: none;
+            }
+          }
+          button {
+            align-items: flex-end;
+            border: none;
+            border-radius: 5px;
+            background-color: $themeColor-bg1;
+            cursor: pointer;
+            &.xMark {
+              width: 30px;
+              height: 30px;
+              margin: 1rem 1rem 0 0;
+            }
+            &.post {
+              width: initial;
+              height: 2.5rem;
+              padding: 5px 15px;
+              margin: 1rem;
+            }
+          }
+        }
+        div.QA {
+          display: flex;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          div {
+            ul {
+              list-style-type: none;
+              li {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-end;
+                width: 75vw;
+                height: 8rem;
+                a {
+                  width: 100%;
+                  text-decoration: none;
+                  div.QATitle,
+                  div.QAContent {
+                    width: 80%;
+                  }
+                }
+              }
+            }
+          }
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      div.post {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0 0 0;
+        button {
+          border: none;
+          border-radius: 5px;
+          margin: 0.5rem;
+          padding: 10px;
+          background-color: $themeColor-bgHeader;
+        }
+      }
+    }
+    &.confirmBlock {
+      div.confirmBG {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(128, 128, 128, 0.6);
+        z-index: 25;
+        div.deleteConfirmBlock {
+          width: 50vw;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #b2967d;
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          align-items: center;
+          border-radius: 5px;
+          p {
+            margin: 1rem;
+            height: auto;
+            width: 100%;
+            text-align: center;
+          }
+          button {
+            height: auto;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 1rem 0.5rem;
+            background-color: $themeColor-bgHeader;
+            &.deleteCheck {
+              color: red;
+              background-color: rgb(215, 151, 151);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+div.inform {
+  display: flex;
+  button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: $themeColor-bgHeader;
+  }
+}
+div.QAPoster {
+  font-size: medium;
+  margin: 0.3rem 0.5rem;
+}
+div.QATimer {
+  margin: 0.3rem 0.5rem;
+  color: $themeColor-bg1;
+}
+div.QATitle {
+  width: 80vw;
+  font-size: large;
+  margin: 0.3rem 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+div.QAContent {
+  width: 80vw;
+  font-size: small;
+  margin: 0.5rem 0.5rem 1rem 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+div.DetailsBlockBg {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+}
+div.DetailsBlock {
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 90vh;
+  margin: auto;
+  background-color: $themeColor-bg2;
+  border: 1px $themeColor-bg1 solid;
+  border-radius: 5px;
+  z-index: 15;
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: flex-start;
+
+  div.close {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    button.xMark {
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 5px;
+      background-color: $themeColor-bg1;
+      cursor: pointer;
+      margin: 0;
+      margin: 1rem;
+    }
+  }
+  div.messageSelf {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    padding: 1rem 2rem 2rem 2rem;
+    div.inform,
+    div.QAModifyBlock {
+      flex: 1;
+    }
+    div.inform {
+      margin: 0;
+      display: block;
+      div.QAPoster {
+        margin: 0;
+        font-size: medium;
+      }
+      div.QATimer {
+        margin: 0;
+        color: $themeColor-bg1;
+      }
+    }
+    div.QAModifyBlock {
+      text-align: right;
+      button {
+        border: none;
+        background-color: initial;
+      }
+      div.modifyOption {
+        background-color: white;
+        width: 120px;
+        height: auto;
+        padding: 0.5rem 0;
+        text-align: center;
+        border-radius: 5px;
+        position: absolute;
+        right: 0.5rem;
+        margin-top: 0.8rem;
+        animation: fadeIn 0.3s ease;
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 1rem;
+          width: 0;
+          height: 0;
+          border: 10px solid transparent;
+          border-bottom-color: white;
+          border-top: 0;
+          margin-left: -15.5px;
+          margin-top: -10px;
+        }
+        button {
+          display: block;
+          width: 100%;
+          padding: 0.5rem;
+          &.deleteBtn {
+            color: red;
+          }
+          &:hover {
+            background-color: gainsboro;
+          }
+          i {
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+
+    div.QATitle {
+      margin: 1rem 0;
+      width: 100%;
+      font-size: large;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    div.QAContent {
+      margin: 0;
+      width: 100%;
+      font-size: small;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  div.replyBlock {
+    padding-top: 1rem;
+    width: 100%;
+    min-height: 50vh;
+    background-color: $themeColor-bg3;
+    p {
+      width: 100%;
+      color: $themeColor-bg1;
+      margin: 0.5rem 1rem;
+    }
+    ul {
+      width: 100%;
+      padding: 0;
+      padding: 0.5rem 2rem;
+      li {
+        list-style: none;
+        div.replyTimer {
+          color: $themeColor-bg1;
+        }
+        div.replyContent {
+          margin: 1rem 0;
+        }
+      }
+    }
+  }
+}
+div.postReply {
+  background-color: $themeColor-bg1;
+  width: 90vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  position: sticky;
+  bottom: 0;
+  flex-wrap: wrap;
+  textarea {
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-right: 2rem;
+    resize: none;
+  }
+  button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: $themeColor-bgHeader;
+  }
+  a {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+div {
+  div.singleDetailsBlock {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90vw;
+    height: 75vh;
+    margin: 1rem 0;
+    background-color: $themeColor-bg2;
+    justify-content: flex-start;
+    border: 1px $themeColor-bg1 solid;
+    border-radius: 5px;
+    z-index: 10;
+    overflow-y: auto;
+    overflow-x: hidden;
+    div.messageSelf {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: auto;
+      margin: 1rem 2rem 2rem 2rem;
+      div.inform {
+        margin: 0;
+        display: block;
+        div.QAPoster {
+          margin: 0;
+          font-size: medium;
+        }
+        div.QATimer {
+          margin: 0;
+          color: $themeColor-bg1;
+        }
+      }
+      div.QATitle {
+        margin: 1rem 0;
+        width: 80vw;
+        font-size: large;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      div.QAContent {
+        margin: 0;
+        width: 80vw;
+        font-size: small;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    div.replyBlock {
+      padding-top: 1rem;
+      width: 100%;
+      background-color: $themeColor-bg3;
+      min-height: 50vh;
+      p {
+        color: $themeColor-bg1;
+        margin: 0.5rem 1rem;
+      }
+      ul {
+        padding: 0;
+        margin: 0.5rem 2rem;
+        li {
+          list-style: none;
+          div.replyTimer {
+            color: $themeColor-bg1;
+          }
+          div.replyContent {
+            margin: 1rem 0;
+          }
+        }
+      }
+    }
+  }
+}
+div.deletedMsg {
+  position: fixed;
+  bottom: 10vh;
+  left: 40%;
+  width: auto;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  background-color: $themeColor-word;
+  color: $themeColor-bg2;
+  &.active {
+    animation: fadeOut 2s 3s ease-in-out;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

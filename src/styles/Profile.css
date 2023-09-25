@@ -1,0 +1,31 @@
+div.profileContent {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3rem 1rem;
+}
+div.profileContent section.userData {
+  min-width: 45vw;
+  margin-right: 2rem;
+}
+div.profileContent section.messagePosted {
+  min-width: 40vw;
+}
+div.profileContent section.messagePosted div.postedBlock {
+  border: rgb(73, 3, 3);
+  border-radius: 5px;
+  background-color: #b2967d;
+  padding: 1rem 0;
+}
+div.profileContent section.messagePosted div.postedBlock ul li {
+  list-style: none;
+}
+div.profileContent section.messagePosted div.postedBlock ul li a {
+  color: rgb(73, 3, 3);
+}
+
+@media (max-width: 700px) {
+  section.userData,
+  section.messagePosted {
+    width: 85vw;
+  }
+}/*# sourceMappingURL=Profile.css.map */

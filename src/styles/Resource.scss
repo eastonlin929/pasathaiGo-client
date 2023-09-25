@@ -1,0 +1,35 @@
+$themeColor-bg1: #b2967d;
+$themeColor-bg2: #eee4e1;
+$themeColor-word: rgba(73, 3, 3, 1);
+$themeColor-bg3: #e7d8c9;
+$themeColor-bg4: #ecf8f8;
+$themeColor-bgHeader: #e6beae;
+$themeColor-bg5: #ecf8f8;
+div.resource {
+  display: flex;
+  justify-content: center;
+  section.allDegree {
+    min-height: 70vh;
+    width: 90vw;
+    height: auto;
+    border: 1.5px $themeColor-bg3 solid;
+    margin: 1rem 0;
+    border-radius: 5px;
+    background-color: $themeColor-bg2;
+    padding-left: 2rem;
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: $themeColor-bg1;
+      font-size: 20px;
+      padding: 1rem 1rem 0.5rem 1rem;
+      &:hover {
+        color: $themeColor-word;
+      }
+    }
+    .active {
+      color: $themeColor-word;
+      border-bottom: 3px $themeColor-bg1 solid;
+    }
+  }
+}

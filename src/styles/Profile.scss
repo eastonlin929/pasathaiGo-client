@@ -1,0 +1,39 @@
+$themeColor-bg1: #b2967d;
+$themeColor-bg2: #eee4e1;
+$themeColor-word: rgba(73, 3, 3, 1);
+$themeColor-bg3: #e7d8c9;
+$themeColor-bg4: #ecf8f8;
+$themeColor-bgHeader: #e6beae;
+$themeColor-bg5: #ecf8f8;
+div.profileContent {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3rem 1rem;
+  section.userData {
+    min-width: 45vw;
+    margin-right: 2rem;
+  }
+  section.messagePosted {
+    min-width: 40vw;
+    div.postedBlock {
+      border: $themeColor-word;
+      border-radius: 5px;
+      background-color: $themeColor-bg1;
+      padding: 1rem 0;
+      ul {
+        li {
+          list-style: none;
+          a {
+            color: $themeColor-word;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 700px) {
+  section.userData,
+  section.messagePosted {
+    width: 85vw;
+  }
+}

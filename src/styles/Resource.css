@@ -1,0 +1,28 @@
+div.resource {
+  display: flex;
+  justify-content: center;
+}
+div.resource section.allDegree {
+  min-height: 70vh;
+  width: 90vw;
+  height: auto;
+  border: 1.5px #e7d8c9 solid;
+  margin: 1rem 0;
+  border-radius: 5px;
+  background-color: #eee4e1;
+  padding-left: 2rem;
+}
+div.resource section.allDegree a {
+  display: inline-block;
+  text-decoration: none;
+  color: #b2967d;
+  font-size: 20px;
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+div.resource section.allDegree a:hover {
+  color: rgb(73, 3, 3);
+}
+div.resource section.allDegree .active {
+  color: rgb(73, 3, 3);
+  border-bottom: 3px #b2967d solid;
+}/*# sourceMappingURL=Resource.css.map */

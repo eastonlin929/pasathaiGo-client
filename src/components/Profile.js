@@ -141,7 +141,7 @@ const Profile = ({ currentUser, setCurrentUser }) => {
             <h2>您發布過的留言：</h2>
             <div className="postedBlock">
               <ul>
-                {userMessages && userMessages.length == 0 ? (
+                {userMessages && userMessages.length === 0 ? (
                   <p>您尚未發布過留言</p>
                 ) : !userMessages ? (
                   <div>載入中...</div>

@@ -137,6 +137,7 @@ const QA = ({ currentUser, setCurrentUser }) => {
   };
   // console.log("readMessage " + readMessage);
   // console.log("isReading " + isReading);
+
   useEffect(() => {
     if (detailsRef) {
       document.addEventListener("click", handleClickOutsideDetails);
@@ -146,6 +147,7 @@ const QA = ({ currentUser, setCurrentUser }) => {
     return () => {
       document.removeEventListener("click", handleClickOutsideDetails);
     };
+    // eslint-disable-next-line
   }, [detailsRef]);
 
   const handleClickOutsidePosting = (e) => {
@@ -157,7 +159,6 @@ const QA = ({ currentUser, setCurrentUser }) => {
       setIsPosting(null);
     }
   };
-
   useEffect(() => {
     if (isPosting) {
       document.addEventListener("click", handleClickOutsidePosting);
@@ -167,6 +168,7 @@ const QA = ({ currentUser, setCurrentUser }) => {
     return () => {
       document.removeEventListener("click", handleClickOutsidePosting);
     };
+    // eslint-disable-next-line
   }, [isPosting]);
   //刪除留言處理
   const handleDeleteConfirm = (_id, e) => {
@@ -198,6 +200,7 @@ const QA = ({ currentUser, setCurrentUser }) => {
         });
       navigate("/QA");
     }
+    // eslint-disable-next-line
   }, [deletedMsg]);
   // useEffect(() => {
   //   QAService.getMessages()
@@ -414,7 +417,7 @@ const QA = ({ currentUser, setCurrentUser }) => {
               </div>
             </div>
           )}
-          {messages && messages.length == 0 ? (
+          {messages && messages.length === 0 ? (
             <div style={{ margin: "2rem", textAlign: "center" }}>
               目前還沒有留言哦
             </div>

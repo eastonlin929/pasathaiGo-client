@@ -299,7 +299,7 @@ const Alphabet = () => {
               <div className="consonant-cell2">{pronunciationThai[index]}</div>
               <button
                 className="pronun"
-                onClick={async () => await pronun(pronunciationThai[index])}
+                onClick={() => pronun(pronunciationThai[index])}
               >
                 <i className="fa-solid fa-volume-high"></i>{" "}
               </button>

@@ -115,7 +115,7 @@ div {
                 }
               }
               &.content {
-                height: 40%;
+                height: 50%;
                 resize: none;
               }
               &:focus {
@@ -172,21 +172,15 @@ div {
           display: flex;
           justify-content: flex-start;
           flex-wrap: wrap;
-          width: 100%;
           div {
             ul {
-              width: 100%;
               list-style-type: none;
-              padding-left: 1rem;
               li {
                 display: flex;
                 flex-wrap: wrap;
                 align-items: flex-end;
-                width: 80%;
+                width: 75vw;
                 height: 8rem;
-                div {
-                  width: 100%;
-                }
                 a {
                   width: 100%;
                   text-decoration: none;
@@ -411,8 +405,7 @@ div.DetailsBlock {
       font-size: large;
       white-space: nowrap;
       overflow: hidden;
-      word-wrap: break-word;
-      white-space: pre-wrap;
+      text-overflow: ellipsis;
     }
     div.QAContent {
       margin: 0;
@@ -420,8 +413,7 @@ div.DetailsBlock {
       font-size: small;
       white-space: nowrap;
       overflow: hidden;
-      word-wrap: break-word;
-      white-space: pre-wrap;
+      text-overflow: ellipsis;
     }
   }
   div.replyBlock {
@@ -495,7 +487,7 @@ div {
     div.messageSelf {
       display: flex;
       flex-wrap: wrap;
-      width: 80%;
+      width: 100%;
       height: auto;
       margin: 1rem 2rem 2rem 2rem;
       div.inform {
@@ -516,8 +508,7 @@ div {
         font-size: large;
         white-space: nowrap;
         overflow: hidden;
-        word-wrap: break-word;
-        white-space: pre-wrap;
+        text-overflow: ellipsis;
       }
       div.QAContent {
         margin: 0;
@@ -525,8 +516,7 @@ div {
         font-size: small;
         white-space: nowrap;
         overflow: hidden;
-        word-wrap: break-word;
-        white-space: pre-wrap;
+        text-overflow: ellipsis;
       }
     }
     div.replyBlock {

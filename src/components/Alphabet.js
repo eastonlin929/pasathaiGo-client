@@ -235,10 +235,53 @@ const Alphabet = () => {
     "ṛ",
     "ṛː",
   ];
-  const pronun = (alphabet) => {
-    let utterance = new window.SpeechSynthesisUtterance(alphabet);
-    utterance.lang = "th-TH";
-    return window.speechSynthesis.speak(utterance);
+
+  //語音處理
+  const synth = window.speechSynthesis;
+
+  const getVoicesPromise = () =>
+    new Promise((resolve) => {
+      const voices = synth.getVoices();
+      resolve(voices);
+    });
+
+  const initVoices = async () => {
+    try {
+      const voices = await getVoicesPromise();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  initVoices();
+
+  const pronun = async (alphabet) => {
+    // utterance.lang = "th-TH";
+    // return window.speechSynthesis.speak(utterance);
+    const utterance = new SpeechSynthesisUtterance();
+    utterance.text = alphabet;
+    try {
+      const voices = await getVoicesPromise();
+      for (let i = 0; i < voices.length; i++) {
+        if (voices[i].name === "Narisa（提高品質）") {
+          utterance.voice = voices[i];
+          synth.speak(utterance);
+          return;
+        }
+      }
+      for (let i = 0; i < voices.length; i++) {
+        if (voices[i].name === "Kanya") {
+          utterance.voice = voices[i];
+          synth.speak(utterance);
+          return;
+        }
+      }
+      return () => {
+        utterance.lang = "th-TH";
+        synth.speak(utterance);
+      };
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -256,7 +299,7 @@ const Alphabet = () => {
               <div className="consonant-cell2">{pronunciationThai[index]}</div>
               <button
                 className="pronun"
-                onClick={() => pronun(pronunciationThai[index])}
+                onClick={async () => await pronun(pronunciationThai[index])}
               >
                 <i className="fa-solid fa-volume-high"></i>{" "}
               </button>

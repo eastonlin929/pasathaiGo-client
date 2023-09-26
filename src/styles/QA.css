@@ -108,7 +108,7 @@ div section.QABlock div.QABorder div.QAPost div textarea.title:placeholder {
   font-size: xx-large;
 }
 div section.QABlock div.QABorder div.QAPost div textarea.content {
-  height: 50%;
+  height: 40%;
   resize: none;
 }
 div section.QABlock div.QABorder div.QAPost div textarea:focus {
@@ -161,16 +161,22 @@ div section.QABlock div.QABorder div.QA {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  width: 100%;
 }
 div section.QABlock div.QABorder div.QA div ul {
+  width: 100%;
   list-style-type: none;
+  padding-left: 1rem;
 }
 div section.QABlock div.QABorder div.QA div ul li {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  width: 75vw;
+  width: 80%;
   height: 8rem;
+}
+div section.QABlock div.QABorder div.QA div ul li div {
+  width: 100%;
 }
 div section.QABlock div.QABorder div.QA div ul li a {
   width: 100%;
@@ -392,7 +398,8 @@ div.DetailsBlock div.messageSelf div.QATitle {
   font-size: large;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 div.DetailsBlock div.messageSelf div.QAContent {
   margin: 0;
@@ -400,7 +407,8 @@ div.DetailsBlock div.messageSelf div.QAContent {
   font-size: small;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 div.DetailsBlock div.replyBlock {
   padding-top: 1rem;
@@ -474,7 +482,7 @@ div div.singleDetailsBlock {
 div div.singleDetailsBlock div.messageSelf {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  width: 80%;
   height: auto;
   margin: 1rem 2rem 2rem 2rem;
 }
@@ -496,7 +504,8 @@ div div.singleDetailsBlock div.messageSelf div.QATitle {
   font-size: large;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 div div.singleDetailsBlock div.messageSelf div.QAContent {
   margin: 0;
@@ -504,7 +513,8 @@ div div.singleDetailsBlock div.messageSelf div.QAContent {
   font-size: small;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 div div.singleDetailsBlock div.replyBlock {
   padding-top: 1rem;

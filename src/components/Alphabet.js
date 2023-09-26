@@ -247,7 +247,7 @@ const Alphabet = () => {
 
   const initVoices = async () => {
     try {
-      const voices = await getVoicesPromise();
+      await getVoicesPromise();
     } catch (e) {
       console.log(e);
     }

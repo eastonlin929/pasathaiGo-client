@@ -11,16 +11,23 @@ div.profileContent section.messagePosted {
   min-width: 40vw;
 }
 div.profileContent section.messagePosted div.postedBlock {
-  border: rgb(73, 3, 3);
   border-radius: 5px;
-  background-color: #b2967d;
+  background-color: #ecf8f8;
   padding: 1rem 0;
 }
+div.profileContent section.messagePosted div.postedBlock ul {
+  width: 80%;
+}
 div.profileContent section.messagePosted div.postedBlock ul li {
+  width: 100%;
   list-style: none;
+  text-overflow: ellipsis;
 }
 div.profileContent section.messagePosted div.postedBlock ul li a {
+  display: inline-block;
+  width: 100%;
   color: rgb(73, 3, 3);
+  text-decoration: none;
 }
 
 @media (max-width: 700px) {

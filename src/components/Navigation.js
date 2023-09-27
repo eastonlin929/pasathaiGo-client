@@ -95,7 +95,7 @@ const Navigation = ({ currentUser, setCurrentUser }) => {
                 to="song"
                 onClick={() => setExpanded(false)}
               >
-                一起來聽歌
+                泰好聽-歌曲推薦
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

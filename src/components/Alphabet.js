@@ -275,6 +275,14 @@ const Alphabet = () => {
           return;
         }
       }
+      for (let i = 0; i < voices.length; i++) {
+        if (voices[i].lang === "th-TH") {
+          utterance.voice = voices[i];
+          synth.speak(utterance);
+          return;
+        }
+      }
+
       return () => {
         utterance.lang = "th-TH";
         synth.speak(utterance);

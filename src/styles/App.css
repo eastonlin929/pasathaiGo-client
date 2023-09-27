@@ -12067,7 +12067,7 @@ div.dropdown-menu.show {
 }
 
 section.footer-section {
-  background-color: #eee4e1;
+  background-color: #b2967d;
   width: 100vw;
   padding: 1rem;
   text-align: center;
@@ -12600,6 +12600,24 @@ div.DetailsBlock div.messageSelf {
   height: auto;
   padding: 1rem 2rem 2rem 2rem;
 }
+div.DetailsBlock div.messageSelf div.QATitle {
+  margin: 1rem 0;
+  width: 100%;
+  font-size: large;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+div.DetailsBlock div.messageSelf div.QAContent {
+  margin: 0;
+  width: 100%;
+  font-size: small;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
 div.DetailsBlock div.messageSelf div.inform,
 div.DetailsBlock div.messageSelf div.QAModifyBlock {
   flex: 1;
@@ -12662,22 +12680,6 @@ div.DetailsBlock div.messageSelf div.QAModifyBlock div.modifyOption button:hover
 div.DetailsBlock div.messageSelf div.QAModifyBlock div.modifyOption button i {
   padding-right: 10px;
 }
-div.DetailsBlock div.messageSelf div.QATitle {
-  margin: 1rem 0;
-  width: 100%;
-  font-size: large;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-div.DetailsBlock div.messageSelf div.QAContent {
-  margin: 0;
-  width: 100%;
-  font-size: small;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 div.DetailsBlock div.replyBlock {
   padding-top: 1rem;
   width: 100%;
@@ -12693,6 +12695,8 @@ div.DetailsBlock div.replyBlock ul {
   width: 100%;
   padding: 0;
   padding: 0.5rem 2rem;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 div.DetailsBlock div.replyBlock ul li {
   list-style: none;
@@ -12772,7 +12776,8 @@ div div.singleDetailsBlock div.messageSelf div.QATitle {
   font-size: large;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 div div.singleDetailsBlock div.messageSelf div.QAContent {
   margin: 0;
@@ -12780,7 +12785,8 @@ div div.singleDetailsBlock div.messageSelf div.QAContent {
   font-size: small;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 div div.singleDetailsBlock div.replyBlock {
   padding-top: 1rem;
@@ -12798,12 +12804,16 @@ div div.singleDetailsBlock div.replyBlock ul {
 }
 div div.singleDetailsBlock div.replyBlock ul li {
   list-style: none;
+  margin-top: 1rem;
 }
 div div.singleDetailsBlock div.replyBlock ul li div.replyTimer {
   color: #b2967d;
 }
 div div.singleDetailsBlock div.replyBlock ul li div.replyContent {
+  width: 80vw;
   margin: 1rem 0;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 div.deletedMsg {
@@ -12849,16 +12859,23 @@ div.profileContent section.messagePosted {
   min-width: 40vw;
 }
 div.profileContent section.messagePosted div.postedBlock {
-  border: rgb(73, 3, 3);
   border-radius: 5px;
   background-color: #b2967d;
   padding: 1rem 0;
 }
+div.profileContent section.messagePosted div.postedBlock ul {
+  width: 80%;
+}
 div.profileContent section.messagePosted div.postedBlock ul li {
+  width: 100%;
   list-style: none;
+  text-overflow: ellipsis;
 }
 div.profileContent section.messagePosted div.postedBlock ul li a {
+  display: inline-block;
+  width: 100%;
   color: rgb(73, 3, 3);
+  text-decoration: none;
 }
 
 @media (max-width: 700px) {
@@ -12894,4 +12911,177 @@ div.resource section.allDegree a:hover {
 div.resource section.allDegree .active {
   color: rgb(73, 3, 3);
   border-bottom: 3px #b2967d solid;
+}
+
+div.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+div.container section.title {
+  width: 100%;
+}
+div.container section.title h2, div.container section.title .h2 {
+  display: inline-block;
+  color: rgb(73, 3, 3);
+  margin: 0.5rem 2rem;
+  padding: 5px;
+  vertical-align: middle;
+  line-height: normal;
+  background-color: #eee4e1;
+}
+div.container section.videoListBlock {
+  border: 1.5px #e7d8c9 solid;
+  width: 95%;
+  height: auto;
+  padding: 2rem;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+div.container section.videoListBlock:hover {
+  cursor: pointer;
+}
+div.container section.videoListBlock div.videoBlock {
+  width: 42vw;
+  height: 60vh;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+div.container section.videoListBlock div.videoBlock iframe {
+  width: 100%;
+  height: 80%;
+}
+div.container section.videoListBlock div.videoBlock p {
+  width: 100%;
+  margin: 0.5rem;
+  text-align: center;
+}
+div.container section.videoListBlock div.videoBlock div {
+  margin: 0.5rem 1rem 1rem 0;
+}
+
+div.videoDetailsBg {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+}
+
+section.videoDetailsBlock {
+  width: 95vw;
+  height: 90vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  border: #b2967d;
+  background-color: #eee4e1;
+  border-radius: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+section.videoDetailsBlock button.xMark {
+  position: absolute;
+  right: 0.5rem;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: #b2967d;
+  cursor: pointer;
+  margin: 0;
+  margin: 1rem;
+}
+section.videoDetailsBlock iframe {
+  width: 80%;
+  height: 70vh;
+  margin: 1rem 0;
+}
+section.videoDetailsBlock h2, section.videoDetailsBlock .h2 {
+  width: 100%;
+  text-align: center;
+}
+section.videoDetailsBlock h2.videoName, section.videoDetailsBlock .videoName.h2 {
+  margin-top: 2rem;
+}
+section.videoDetailsBlock pre.lyric {
+  width: 100%;
+  font-size: large;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  padding: 1rem 2rem;
+  margin: 1rem;
+}
+
+@media (max-width: 900px) {
+  div.container section.videoListBlock div.videoBlock {
+    width: 100%;
+    height: 80vh;
+  }
+  section.videoDetailsBlock iframe {
+    width: 80%;
+    height: 60vh;
+  }
+}
+@media (max-width: 700px) {
+  div.container section.videoListBlock div.videoBlock {
+    width: 100%;
+    height: 60vh;
+  }
+  section.videoDetailsBlock iframe {
+    width: 80%;
+    height: 60vh;
+  }
+}
+@media (max-width: 500px) {
+  div.container section.videoListBlock {
+    padding: 0.5rem;
+  }
+  div.container section.videoListBlock div.videoBlock {
+    width: 100%;
+    min-height: 40vh;
+    max-height: 50vh;
+  }
+  div.container section.videoListBlock div.videoBlock iframe {
+    width: 100%;
+    height: 50%;
+  }
+  section.videoDetailsBlock iframe {
+    width: 80%;
+    height: 50%;
+  }
+}
+@media (max-width: 450px) {
+  div.container section.videoListBlock {
+    padding: 0.5rem;
+  }
+  div.container section.videoListBlock div.videoBlock {
+    width: 100%;
+    min-height: 40vh;
+    max-height: 40vh;
+  }
+  div.container section.videoListBlock div.videoBlock iframe {
+    width: 100%;
+    height: 70%;
+  }
+  section.videoDetailsBlock iframe {
+    width: 80%;
+    height: 30%;
+  }
 }/*# sourceMappingURL=App.css.map */

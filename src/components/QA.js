@@ -77,11 +77,7 @@ const QA = ({ currentUser, setCurrentUser }) => {
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, [newMessage]);
-  useEffect(() => {
-    return () => {
-      window.addEventListener("popstate", onClose);
-    };
-  }, []);
+
   //處理點擊留言
   const { data: readMessage } = useGetURLMessage(messageId, messageId !== null);
   const handleClick = (_id) => {
@@ -104,9 +100,19 @@ const QA = ({ currentUser, setCurrentUser }) => {
     setMessageId(null);
     setEllipsisClick(false);
     setMessageId(null);
-    window.history.replaceState(null, "", "/QA");
+    window.history.pushState(null, "", "/QA");
     setDetailsRef(null);
+    window.removeEventListener("popstate", onClose);
   };
+  useEffect(() => {
+    if (isReading) {
+      window.addEventListener("popstate", onClose);
+    } else {
+      window.removeEventListener("popstate", onClose);
+    }
+    // eslint-disable-next-line
+  }, [isReading]);
+
   //處理點擊區塊外關閉
   const handleClickOutsideDetails = (e) => {
     if (
@@ -119,8 +125,9 @@ const QA = ({ currentUser, setCurrentUser }) => {
       setIsReading(false);
       setMessageId(null);
       setEllipsisClick(false);
-      window.history.replaceState(null, "", "/QA");
+      window.history.pushState(null, "", "/QA");
       setDetailsRef(null);
+      console.log("running");
     } else {
       return;
     }

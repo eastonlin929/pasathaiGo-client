@@ -1,10 +1,3 @@
-$themeColor-bg1: #b2967d;
-$themeColor-bg2: #eee4e1;
-$themeColor-word: rgba(73, 3, 3, 1);
-$themeColor-bg3: #e7d8c9;
-$themeColor-bg4: #ecf8f8;
-$themeColor-bgHeader: #e6beae;
-$themeColor-bg5: #ecf8f8;
 div {
   hr {
     width: 75vw;
@@ -86,7 +79,6 @@ div {
           z-index: 10;
           &::-webkit-scrollbar {
             width: 7px;
-            // background-color: $themeColor-word;
           }
           &::-webkit-scrollbar-thumb {
             background-color: $themeColor-bg1;
@@ -336,10 +328,29 @@ div.DetailsBlock {
     width: 100%;
     height: auto;
     padding: 1rem 2rem 2rem 2rem;
+    div.QATitle {
+      margin: 1rem 0;
+      width: 100%;
+      font-size: large;
+      white-space: nowrap;
+      overflow: hidden;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+    div.QAContent {
+      margin: 0;
+      width: 100%;
+      font-size: small;
+      white-space: nowrap;
+      overflow: hidden;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
     div.inform,
     div.QAModifyBlock {
       flex: 1;
     }
+
     div.inform {
       margin: 0;
       display: block;
@@ -398,23 +409,6 @@ div.DetailsBlock {
         }
       }
     }
-
-    div.QATitle {
-      margin: 1rem 0;
-      width: 100%;
-      font-size: large;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    div.QAContent {
-      margin: 0;
-      width: 100%;
-      font-size: small;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
   }
   div.replyBlock {
     padding-top: 1rem;
@@ -430,6 +424,8 @@ div.DetailsBlock {
       width: 100%;
       padding: 0;
       padding: 0.5rem 2rem;
+      word-wrap: break-word;
+      white-space: pre-wrap;
       li {
         list-style: none;
         div.replyTimer {
@@ -508,7 +504,8 @@ div {
         font-size: large;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
+        word-wrap: break-word;
+        white-space: pre-wrap;
       }
       div.QAContent {
         margin: 0;
@@ -516,7 +513,8 @@ div {
         font-size: small;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
+        word-wrap: break-word;
+        white-space: pre-wrap;
       }
     }
     div.replyBlock {
@@ -524,6 +522,7 @@ div {
       width: 100%;
       background-color: $themeColor-bg3;
       min-height: 50vh;
+
       p {
         color: $themeColor-bg1;
         margin: 0.5rem 1rem;
@@ -533,11 +532,15 @@ div {
         margin: 0.5rem 2rem;
         li {
           list-style: none;
+          margin-top: 1rem;
           div.replyTimer {
             color: $themeColor-bg1;
           }
           div.replyContent {
+            width: 80vw;
             margin: 1rem 0;
+            word-wrap: break-word;
+            white-space: pre-wrap;
           }
         }
       }

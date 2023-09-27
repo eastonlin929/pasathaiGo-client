@@ -324,6 +324,24 @@ div.DetailsBlock div.messageSelf {
   height: auto;
   padding: 1rem 2rem 2rem 2rem;
 }
+div.DetailsBlock div.messageSelf div.QATitle {
+  margin: 1rem 0;
+  width: 100%;
+  font-size: large;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+div.DetailsBlock div.messageSelf div.QAContent {
+  margin: 0;
+  width: 100%;
+  font-size: small;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
 div.DetailsBlock div.messageSelf div.inform,
 div.DetailsBlock div.messageSelf div.QAModifyBlock {
   flex: 1;
@@ -386,22 +404,6 @@ div.DetailsBlock div.messageSelf div.QAModifyBlock div.modifyOption button:hover
 div.DetailsBlock div.messageSelf div.QAModifyBlock div.modifyOption button i {
   padding-right: 10px;
 }
-div.DetailsBlock div.messageSelf div.QATitle {
-  margin: 1rem 0;
-  width: 100%;
-  font-size: large;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-div.DetailsBlock div.messageSelf div.QAContent {
-  margin: 0;
-  width: 100%;
-  font-size: small;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 div.DetailsBlock div.replyBlock {
   padding-top: 1rem;
   width: 100%;
@@ -417,6 +419,8 @@ div.DetailsBlock div.replyBlock ul {
   width: 100%;
   padding: 0;
   padding: 0.5rem 2rem;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 div.DetailsBlock div.replyBlock ul li {
   list-style: none;
@@ -496,7 +500,8 @@ div div.singleDetailsBlock div.messageSelf div.QATitle {
   font-size: large;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 div div.singleDetailsBlock div.messageSelf div.QAContent {
   margin: 0;
@@ -504,7 +509,8 @@ div div.singleDetailsBlock div.messageSelf div.QAContent {
   font-size: small;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 div div.singleDetailsBlock div.replyBlock {
   padding-top: 1rem;
@@ -522,12 +528,16 @@ div div.singleDetailsBlock div.replyBlock ul {
 }
 div div.singleDetailsBlock div.replyBlock ul li {
   list-style: none;
+  margin-top: 1rem;
 }
 div div.singleDetailsBlock div.replyBlock ul li div.replyTimer {
   color: #b2967d;
 }
 div div.singleDetailsBlock div.replyBlock ul li div.replyContent {
+  width: 80vw;
   margin: 1rem 0;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 div.deletedMsg {

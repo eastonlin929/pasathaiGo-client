@@ -560,6 +560,19 @@ div.deletedMsg {
     animation: fadeOut 2s 3s ease-in-out;
   }
 }
+.Toastify__toast-theme--colored.Toastify__toast.Toastify__toast--error {
+  background-color: $themeColor-word;
+  .Toastify__toast-body * {
+    color: $themeColor-bg2;
+  }
+}
+
+.Toastify__toast-theme--colored.Toastify__toast.Toastify__toast--success {
+  background-color: $themeColor-bg5;
+  .Toastify__toast-body * {
+    color: $themeColor-word;
+  }
+}
 @keyframes fadeIn {
   from {
     opacity: 0;

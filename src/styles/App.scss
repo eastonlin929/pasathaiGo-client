@@ -9,6 +9,8 @@ $themeColor-bg5: #ecf8f8;
 
 @import "./custom.scss";
 
+@import "../../node_modules/react-toastify/dist/ReactToastify.css";
+
 @import "./QA.scss";
 
 @import "./Profile.scss";

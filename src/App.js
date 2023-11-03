@@ -14,83 +14,70 @@ import Profile from "./components/Profile";
 import ResetPassword from "./components/ResetPassword";
 import QADetails from "./components/QADetails";
 import Page404 from "./components/Page404";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const App = () => {
   let [currentUser, setCurrentUser] = useState(authService.getCurrentUser);
-  const queryClient = new QueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Layout currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          }
+        >
+          <Route index element={<Homepage />} />
+          <Route path="register" element={<Register />} />
           <Route
-            path="/"
+            path="login"
             element={
-              <Layout
+              <Login
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
             }
+          />
+          <Route
+            path="QA"
+            element={
+              <QA currentUser={currentUser} setCurrentUser={setCurrentUser} />
+            }
           >
-            <Route index element={<Homepage />} />
-            <Route path="register" element={<Register />} />
             <Route
-              path="login"
-              element={
-                <Login
-                  currentUser={currentUser}
-                  setCurrentUser={setCurrentUser}
-                />
-              }
-            />
-            <Route
-              path="QA"
+              path="track"
               element={
                 <QA currentUser={currentUser} setCurrentUser={setCurrentUser} />
               }
-            >
-              <Route
-                path="track"
-                element={
-                  <QA
-                    currentUser={currentUser}
-                    setCurrentUser={setCurrentUser}
-                  />
-                }
-              />
-              <Route
-                path="populate"
-                element={
-                  <QA
-                    currentUser={currentUser}
-                    setCurrentUser={setCurrentUser}
-                  />
-                }
-              />
-            </Route>
-            <Route path="QA/:messageId" element={<QADetails />} />
-            <Route path="resource" element={<Resource />}>
-              <Route path="jr" element={<Resource />} />
-              <Route path="mid" element={<Resource />} />
-              <Route path="sr" element={<Resource />} />
-            </Route>
-            <Route path="alphabet" element={<Alphabet />} />
-            <Route path="song" element={<Song />} />
+            />
             <Route
-              path="profile"
+              path="populate"
               element={
-                <Profile
-                  currentUser={currentUser}
-                  setCurrentUser={setCurrentUser}
-                />
+                <QA currentUser={currentUser} setCurrentUser={setCurrentUser} />
               }
             />
-            <Route path="resetpassword" element={<ResetPassword />} />
-            <Route path="*" element={<Page404 />} />
-            <Route path="404" element={<Page404 />} />
           </Route>
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
+          <Route path="QA/:messageId" element={<QADetails />} />
+          <Route path="resource" element={<Resource />}>
+            <Route path="jr" element={<Resource />} />
+            <Route path="mid" element={<Resource />} />
+            <Route path="sr" element={<Resource />} />
+          </Route>
+          <Route path="alphabet" element={<Alphabet />} />
+          <Route path="song" element={<Song />} />
+          <Route
+            path="profile"
+            element={
+              <Profile
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
+          <Route path="resetpassword" element={<ResetPassword />} />
+          <Route path="*" element={<Page404 />} />
+          <Route path="404" element={<Page404 />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

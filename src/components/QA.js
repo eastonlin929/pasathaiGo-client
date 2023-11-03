@@ -1,13 +1,17 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import QAService from "../services/QA-service";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useGetMessages, useGetURLMessage } from "../customHooks/qaApi";
+import {
+  useDeleteMsg,
+  useGetMessages,
+  useGetURLMessage,
+  usePostMessage,
+  usePostReply,
+} from "../customHooks/qaApi";
+import { toast } from "react-toastify";
 const QA = ({ currentUser, setCurrentUser }) => {
-  const [newMessage, setNewMessage] = useState({ title: "", content: "" });
   const [isPosting, setIsPosting] = useState(null);
   const [isReading, setIsReading] = useState(null);
   const [messageId, setMessageId] = useState(null);
-  const [newReply, setNewReply] = useState({ content: "" });
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [ellipsisClick, setEllipsisClick] = useState(false);
   const postBlockRef = useRef(null);
@@ -15,17 +19,54 @@ const QA = ({ currentUser, setCurrentUser }) => {
   const [detailsRef, setDetailsRef] = useState(null);
   const ellipsisRef = useRef(null);
   const deleteConfirmRef = useRef(null);
-  const [deletedMsg, setDeletedMsg] = useState("");
+  const replyRef = useRef(null);
+  const titleRef = useRef(null);
+  const contentRef = useRef(null);
   const navigate = useNavigate();
+
+  //內容為空的錯誤訊息設置
+  const toastContentError = () =>
+    toast.error("內容不能為空", {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      closeButton: false,
+      theme: "colored",
+    });
+  const toastTitleError = () =>
+    toast.error("標題不能為空", {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      closeButton: false,
+      theme: "colored",
+    });
+
   //首次render所有留言
   const { isErrorMsg, data: messages, errorMsg } = useGetMessages();
 
   //處理發布留言
-  const handlePostMessage = () => {
-    QAService.postMessage(newMessage.title, newMessage.content).then((data) => {
-      setNewMessage({ title: "", content: "" });
+  const postMessageMutation = usePostMessage();
+  const handlePostMessage = async () => {
+    if (titleRef.current.value.trim() === "") {
+      toastTitleError();
+    } else if (contentRef.current.value.trim() === "") {
+      toastContentError();
+    } else {
+      await postMessageMutation.mutateAsync({
+        title: titleRef.current.value,
+        content: contentRef.current.value,
+      });
       setIsPosting(!isPosting);
-    });
+    }
   };
   useEffect(() => {
     if (isPosting || isReading) {
@@ -39,14 +80,18 @@ const QA = ({ currentUser, setCurrentUser }) => {
   }, [isPosting, isReading]);
 
   //處理新回覆
-  const handlePostReply = (_id) => {
-    QAService.postReply(_id, newReply.content)
-      .then((data) => {
-        setNewReply({ content: "" });
-      })
-      .catch((error) => {
-        console.error(error);
+  const postReplyMutation = usePostReply();
+  const handlePostReply = async (_id) => {
+    if (replyRef.current.value.trim() === "") {
+      toastContentError();
+    } else {
+      await postReplyMutation.mutateAsync({
+        _id: _id,
+        content: replyRef.current.value,
       });
+      replyRef.current.value = "";
+      toast.dismiss();
+    }
   };
   //處理時間顯示
   function timeAgo(dateString) {
@@ -69,18 +114,10 @@ const QA = ({ currentUser, setCurrentUser }) => {
         return year + "年" + month + "月" + day + "日";
     }
   }
-  //處理輸入框外觀
-  const textareaRef = useRef(null);
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-    }
-  }, [newMessage]);
 
   //處理點擊留言
   const { data: readMessage } = useGetURLMessage(messageId, messageId !== null);
-  const handleClick = (_id) => {
+  const handleClickMsg = (_id) => {
     if (_id) {
       setMessageId(_id);
       setIsReading(true);
@@ -115,11 +152,22 @@ const QA = ({ currentUser, setCurrentUser }) => {
 
   //處理點擊區塊外關閉
   const handleClickOutsideDetails = (e) => {
+    let currentElement = e.target;
+    while (currentElement) {
+      if (
+        currentElement.classList.contains("Toastify__toast-container") ||
+        currentElement.classList.contains("Toastify__toast") ||
+        currentElement.classList.contains("Toastify__close-button")
+      ) {
+        return; // 如果是 toast 相關元件，直接返回
+      }
+      currentElement = currentElement.parentElement;
+    }
     if (
       isReading &&
       readMessage &&
       detailsRef &&
-      !DetailsBlockRef.current.contains(e.target) &&
+      !DetailsBlockRef?.current?.contains(e.target) &&
       !deleteConfirmRef.current
     ) {
       setIsReading(false);
@@ -127,7 +175,6 @@ const QA = ({ currentUser, setCurrentUser }) => {
       setEllipsisClick(false);
       window.history.pushState(null, "", "/QA");
       setDetailsRef(null);
-      console.log("running");
     } else {
       return;
     }
@@ -157,6 +204,17 @@ const QA = ({ currentUser, setCurrentUser }) => {
   }, [detailsRef]);
 
   const handleClickOutsidePosting = (e) => {
+    let currentElement = e.target;
+    while (currentElement) {
+      if (
+        currentElement.classList.contains("Toastify__toast-container") ||
+        currentElement.classList.contains("Toastify__toast") ||
+        currentElement.classList.contains("Toastify__close-button")
+      ) {
+        return; // 如果是 toast 相關元件，直接返回
+      }
+      currentElement = currentElement.parentElement;
+    }
     if (
       isPosting &&
       postBlockRef.current &&
@@ -176,38 +234,36 @@ const QA = ({ currentUser, setCurrentUser }) => {
     };
     // eslint-disable-next-line
   }, [isPosting]);
+
+  //刪除完成訊息通知
+  const toastDeleteMsg = () =>
+    toast.success("刪除成功！", {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      closeButton: false,
+      theme: "colored",
+    });
   //刪除留言處理
   const handleDeleteConfirm = (_id, e) => {
     e.stopPropagation();
     setDeleteConfirm(_id);
     setEllipsisClick(false);
   };
-  const handleDeleteMessage = useCallback((_id, e) => {
+  const deleteMsgMutation = useDeleteMsg();
+  const handleDeleteMessage = async (_id, e) => {
     e.stopPropagation();
-    QAService.deleteMessage(_id).then((data) => {
-      setDeletedMsg(data);
-      setTimeout(() => {
-        setDeletedMsg("");
-      }, 5000);
-    });
+    await deleteMsgMutation.mutateAsync({ _id });
+    navigate("/QA");
     setDeleteConfirm(false);
     setIsReading(null);
-  }, []);
-  useEffect(() => {
-    if (deletedMsg) {
-      QAService.getMessages()
-        .then((data) => {
-          if (data && data.length !== 0) {
-            // setMessages(data);
-          }
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-      navigate("/QA");
-    }
-    // eslint-disable-next-line
-  }, [deletedMsg]);
+    toastDeleteMsg();
+  };
+
   // useEffect(() => {
   //   QAService.getMessages()
   //     .then((data) => {
@@ -263,22 +319,13 @@ const QA = ({ currentUser, setCurrentUser }) => {
                       className="title"
                       type="text"
                       placeholder="標題"
-                      value={newMessage.title}
-                      onChange={(e) =>
-                        setNewMessage({ ...newMessage, title: e.target.value })
-                      }
+                      ref={titleRef}
                     />
                     <textarea
                       className="content"
                       type="text"
                       placeholder="內容"
-                      value={newMessage.content}
-                      onChange={(e) =>
-                        setNewMessage({
-                          ...newMessage,
-                          content: e.target.value,
-                        })
-                      }
+                      ref={contentRef}
                     />
                     <button className="post" onClick={handlePostMessage}>
                       發布
@@ -404,12 +451,13 @@ const QA = ({ currentUser, setCurrentUser }) => {
                       className="reply"
                       placeholder="留言......"
                       type="text"
-                      value={newReply.content}
-                      onChange={(e) =>
-                        setNewReply({ ...newReply, content: e.target.value })
-                      }
+                      ref={replyRef}
                     />
-                    <button onClick={() => handlePostReply(readMessage._id)}>
+                    <button
+                      onClick={() => {
+                        handlePostReply(readMessage._id);
+                      }}
+                    >
                       送出
                     </button>
                   </div>
@@ -435,7 +483,7 @@ const QA = ({ currentUser, setCurrentUser }) => {
                     <li key={index}>
                       <div
                         onClick={() => {
-                          handleClick(message._id);
+                          handleClickMsg(message._id);
                         }}
                       >
                         <div className="inform">
@@ -472,7 +520,7 @@ const QA = ({ currentUser, setCurrentUser }) => {
               </div>
             </div>
           ) : (
-            <div>加載中...</div>
+            <div style={{ textAlign: "center" }}>加載中...</div>
           )}
           {isErrorMsg && <div>{errorMsg.message}</div>}
         </div>
@@ -501,11 +549,6 @@ const QA = ({ currentUser, setCurrentUser }) => {
           </div>
         )}
       </section>
-      {deletedMsg && (
-        <div className={`deletedMsg ${deletedMsg ? " active" : ""}`}>
-          {deletedMsg}
-        </div>
-      )}
     </div>
   );
 };

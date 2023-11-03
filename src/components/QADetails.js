@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import QAService from "../services/QA-service";
-
+import { usePostReply } from "../customHooks/qaApi";
+import { toast } from "react-toastify";
 const QADetails = () => {
   const [readMessage, setReadMessage] = useState([]);
   const { messageId } = useParams();
   const [reply, setReply] = useState([]);
-  const [newReply, setNewReply] = useState({ content: "" });
   const navigate = useNavigate();
+  const replyRef = useRef(null);
+
+  //渲染詳細資料
   //首次渲染詳細留言內容
   useEffect(() => {
     QAService.getURLMessage(messageId)
@@ -19,17 +22,34 @@ const QADetails = () => {
         navigate("/404");
       });
   });
+  //內容為空的錯誤訊息設置
+  const toastContentError = () =>
+    toast.error("內容不能為空", {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      closeButton: false,
+      theme: "colored",
+    });
   //處理新回覆
-  const handlePostReply = (_id) => {
-    QAService.postReply(_id, newReply.content)
-      .then((data) => {
-        setReply(data);
-        setNewReply({ content: "" });
-      })
-      .catch((error) => {
-        console.error(error);
+  const postReplyMutation = usePostReply();
+  const handlePostReply = async (_id) => {
+    if (replyRef.current.value.trim() === "") {
+      toastContentError();
+    } else {
+      await postReplyMutation.mutateAsync({
+        _id: _id,
+        content: replyRef.current.value,
       });
+      replyRef.current.value = "";
+      toast.dismiss();
+    }
   };
+
   //處理時間顯示
   function timeAgo(dateString) {
     const date = new Date(dateString);
@@ -61,40 +81,6 @@ const QADetails = () => {
               <div className="QAPoster">載入中...</div>
             </div>
           </div>
-          {reply && (
-            <div>
-              <div className="replyBlock">
-                <ul>
-                  {reply.map((replies, index) => (
-                    <li key={index}>
-                      <div className="replyUser">
-                        {replies.user.nickname
-                          ? replies.user.nickname
-                          : replies.user.username}
-                      </div>
-                      <div className="replyTimer">{timeAgo(replies.time)}</div>
-                      <div className="replyContent">{replies.content}</div>
-                      <hr />
-                    </li>
-                  ))}
-                </ul>
-              </div>{" "}
-              <div className="postReply">
-                <textarea
-                  className="reply"
-                  placeholder="留言......"
-                  type="text"
-                  value={newReply.content}
-                  onChange={(e) =>
-                    setNewReply({ ...newReply, content: e.target.value })
-                  }
-                />
-                <button onClick={() => handlePostReply(readMessage._id)}>
-                  送出
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       ) : (
         <div className="singleDetailsBlock">
@@ -126,9 +112,7 @@ const QADetails = () => {
           {reply && (
             <div>
               <div className="replyBlock">
-                <p>全部留言</p>
                 <ul>
-                  <hr />
                   {reply.map((replies, index) => (
                     <li key={index}>
                       <div className="replyUser">
@@ -148,10 +132,7 @@ const QADetails = () => {
                   className="reply"
                   placeholder="留言......"
                   type="text"
-                  value={newReply.content}
-                  onChange={(e) =>
-                    setNewReply({ ...newReply, content: e.target.value })
-                  }
+                  ref={replyRef}
                 />
                 <button onClick={() => handlePostReply(readMessage._id)}>
                   送出

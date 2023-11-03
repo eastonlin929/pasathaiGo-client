@@ -4,6 +4,7 @@
  * Copyright 2011-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import "../../node_modules/react-toastify/dist/ReactToastify.css";
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -12828,6 +12829,20 @@ div.deletedMsg {
 }
 div.deletedMsg.active {
   animation: fadeOut 2s 3s ease-in-out;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast.Toastify__toast--error {
+  background-color: rgb(73, 3, 3);
+}
+.Toastify__toast-theme--colored.Toastify__toast.Toastify__toast--error .Toastify__toast-body * {
+  color: #eee4e1;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast.Toastify__toast--success {
+  background-color: #ecf8f8;
+}
+.Toastify__toast-theme--colored.Toastify__toast.Toastify__toast--success .Toastify__toast-body * {
+  color: rgb(73, 3, 3);
 }
 
 @keyframes fadeIn {

@@ -9,7 +9,7 @@ class MessageService {
         return response.data;
       })
       .catch((e) => {
-        console.log(e);
+        return e.response.data;
       });
   }
   //獲得特定留言
@@ -20,7 +20,7 @@ class MessageService {
         return response.data[0];
       })
       .catch((e) => {
-        console.log(e);
+        return e.response.data;
       });
   }
   //獲得使用者留言
@@ -41,7 +41,7 @@ class MessageService {
         return response.data;
       })
       .catch((e) => {
-        console.log(e);
+        return e.response.data;
       });
   }
   //新增留言
@@ -63,11 +63,10 @@ class MessageService {
         }
       )
       .then((response) => {
-        console.log(response);
         return response.data;
       })
       .catch((e) => {
-        console.log(e);
+        return e.response.data;
       });
   }
   //刪除留言
@@ -113,7 +112,7 @@ class MessageService {
         return response.data;
       })
       .catch((e) => {
-        console.log(e);
+        return e.response.data;
       });
   }
 }

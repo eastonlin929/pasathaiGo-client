@@ -14,17 +14,23 @@ div.profileContent {
       padding: 1rem 0;
       ul {
         width: 80%;
+
         li {
           width: 100%;
           list-style: none;
           text-overflow: ellipsis;
-
+          margin-bottom: 0.5rem;
           a {
             display: inline-block;
             width: 100%;
             color: $themeColor-word;
             text-decoration: none;
           }
+        }
+        hr {
+          width: 95%;
+          border: 1.5px $themeColor-bg2 solid;
+          margin-bottom: 0.5rem;
         }
       }
     }

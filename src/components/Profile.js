@@ -15,7 +15,7 @@ const Profile = ({ currentUser, setCurrentUser }) => {
       setCurrentUserId(currentUser.user._id);
     }
   }, [currentUser]);
-  const { data: userMessages } = useGetUserMessages(
+  const { data: userMessages, isLoading } = useGetUserMessages(
     currentUserId,
     currentUserId !== null
   );
@@ -141,10 +141,10 @@ const Profile = ({ currentUser, setCurrentUser }) => {
             <h2>您發布過的留言：</h2>
             <div className="postedBlock">
               <ul>
-                {userMessages && userMessages.length === 0 ? (
-                  <p>您尚未發布過留言</p>
-                ) : !userMessages ? (
+                {isLoading ? (
                   <div>載入中...</div>
+                ) : userMessages && userMessages.length === 0 ? (
+                  <p>您尚未發布過留言</p>
                 ) : (
                   userMessages.map((msg, index) => (
                     <div key={index}>
@@ -153,6 +153,7 @@ const Profile = ({ currentUser, setCurrentUser }) => {
                         <li key={index}>
                           <Link to={`/QA/${msg._id}`}>{msg.title}</Link>
                         </li>
+                        <hr />
                       </div>
                     </div>
                   ))

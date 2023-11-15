@@ -1,15 +1,18 @@
 div.resource {
   display: flex;
-  justify-content: center;
-  section.allDegree {
-    min-height: 70vh;
-    width: 90vw;
+  justify-content: flex-start;
+  min-height: 70vh;
+  width: 90vw;
+  height: auto;
+  border: 1.5px $themeColor-bg3 solid;
+  margin: 1rem 0;
+  border-radius: 5px;
+  background-color: $themeColor-bg2;
+  padding: 0 0 2rem 2rem;
+  flex-wrap: wrap;
+  section.allLevel {
+    width: 100%;
     height: auto;
-    border: 1.5px $themeColor-bg3 solid;
-    margin: 1rem 0;
-    border-radius: 5px;
-    background-color: $themeColor-bg2;
-    padding-left: 2rem;
     a {
       display: inline-block;
       text-decoration: none;
@@ -23,6 +26,21 @@ div.resource {
     .active {
       color: $themeColor-word;
       border-bottom: 3px $themeColor-bg1 solid;
+    }
+  }
+  section.resourceList {
+    width: 100%;
+    height: auto;
+
+    a {
+      margin-top: 2rem;
+      display: block;
+      text-decoration: none;
+      color: $themeColor-word;
+      font-size: larger;
+    }
+    hr {
+      width: 50%;
     }
   }
 }

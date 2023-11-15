@@ -12885,12 +12885,18 @@ div.profileContent section.messagePosted div.postedBlock ul li {
   width: 100%;
   list-style: none;
   text-overflow: ellipsis;
+  margin-bottom: 0.5rem;
 }
 div.profileContent section.messagePosted div.postedBlock ul li a {
   display: inline-block;
   width: 100%;
   color: rgb(73, 3, 3);
   text-decoration: none;
+}
+div.profileContent section.messagePosted div.postedBlock ul hr {
+  width: 95%;
+  border: 1.5px #eee4e1 solid;
+  margin-bottom: 0.5rem;
 }
 
 @media (max-width: 700px) {
@@ -12901,9 +12907,7 @@ div.profileContent section.messagePosted div.postedBlock ul li a {
 }
 div.resource {
   display: flex;
-  justify-content: center;
-}
-div.resource section.allDegree {
+  justify-content: flex-start;
   min-height: 70vh;
   width: 90vw;
   height: auto;
@@ -12911,21 +12915,40 @@ div.resource section.allDegree {
   margin: 1rem 0;
   border-radius: 5px;
   background-color: #eee4e1;
-  padding-left: 2rem;
+  padding: 0 0 2rem 2rem;
+  flex-wrap: wrap;
 }
-div.resource section.allDegree a {
+div.resource section.allLevel {
+  width: 100%;
+  height: auto;
+}
+div.resource section.allLevel a {
   display: inline-block;
   text-decoration: none;
   color: #b2967d;
   font-size: 20px;
   padding: 1rem 1rem 0.5rem 1rem;
 }
-div.resource section.allDegree a:hover {
+div.resource section.allLevel a:hover {
   color: rgb(73, 3, 3);
 }
-div.resource section.allDegree .active {
+div.resource section.allLevel .active {
   color: rgb(73, 3, 3);
   border-bottom: 3px #b2967d solid;
+}
+div.resource section.resourceList {
+  width: 100%;
+  height: auto;
+}
+div.resource section.resourceList a {
+  margin-top: 2rem;
+  display: block;
+  text-decoration: none;
+  color: rgb(73, 3, 3);
+  font-size: larger;
+}
+div.resource section.resourceList hr {
+  width: 50%;
 }
 
 div.container {
